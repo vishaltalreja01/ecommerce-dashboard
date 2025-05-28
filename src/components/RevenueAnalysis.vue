@@ -74,7 +74,7 @@ export default {
           params.category = selectedCategory.value;
         }
 
-        const response = await axios.get('http://localhost:3001/api/inventory/dashboard-data', { params });
+        const response = await axios.get('https://ecommerce-dashboard-backend-production.up.railway.app/api/inventory/dashboard-data', { params });
         dashboardData.value = response.data;
 
         calculateTotals();

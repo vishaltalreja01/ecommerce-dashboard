@@ -59,7 +59,7 @@ export default {
 
     const submitProduct = async () => {
       try {
-        await axios.post('http://localhost:3001/api/inventory/add', {
+        await axios.post('https://ecommerce-dashboard-backend-production.up.railway.app/api/inventory/add', {
           name: name.value,
           category: category.value,
           price: price.value,
