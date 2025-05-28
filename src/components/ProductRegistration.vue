@@ -29,8 +29,10 @@
       <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded">Add Product</button>
     </form>
 
-    <div v-if="toast.visible"
-      class="fixed bottom-6 right-6 bg-green-500 text-white px-4 py-2 rounded shadow-lg transition-opacity duration-300">
+    <div
+      v-if="toast.visible"
+      class="fixed bottom-6 right-6 bg-green-500 text-white px-4 py-2 rounded shadow-lg transition-opacity duration-300"
+    >
       {{ toast.message }}
     </div>
   </div>
@@ -38,7 +40,7 @@
 
 <script>
 import axios from 'axios';
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 
 export default {
   name: 'ProductRegistration',
@@ -47,6 +49,7 @@ export default {
     const category = ref('');
     const price = ref(0);
     const stock = ref(0);
+    const categories = ref([]);
 
     const toast = ref({ visible: false, message: '' });
 
@@ -77,6 +80,15 @@ export default {
       }
     };
 
+    onMounted(async () => {
+      try {
+        const response = await axios.get('https://ecommerce-dashboard-backend-production.up.railway.app/api/inventory/categories');
+        categories.value = response.data;
+      } catch (error) {
+        console.error('Error fetching categories:', error);
+      }
+    });
+
     return {
       name,
       category,
@@ -84,13 +96,15 @@ export default {
       stock,
       submitProduct,
       toast,
+      categories,
     };
   },
 };
 </script>
 
 <style scoped>
-form input {
+form input,
+form select {
   display: block;
   width: 100%;
 }
