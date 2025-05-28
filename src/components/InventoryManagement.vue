@@ -80,7 +80,7 @@ export default {
 
     const fetchInventory = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/api/inventory');
+        const response = await axios.get('https://ecommerce-dashboard-backend-production.up.railway.app/api/inventory');
         products.value = response.data;
       } catch (error) {
         console.error('Error fetching inventory:', error);
@@ -90,7 +90,7 @@ export default {
 
     const updateStock = async (product) => {
       try {
-        await axios.post('http://localhost:3001/api/inventory/update', {
+        await axios.post('https://ecommerce-dashboard-backend-production.up.railway.app/api/inventory/update', {
           id: product.id,
           stock: product.stock,
         });
