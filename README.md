@@ -54,7 +54,7 @@ project-root/
 
 ```bash
 git clone https://github.com/vishaltalreja01/ecommerce-dashboard.git
-cd inventory-dashboard
+cd ecommerce-dashboard
 ```
 
 ### 2. Frontend Setup
