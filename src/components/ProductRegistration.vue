@@ -10,7 +10,10 @@
 
       <div>
         <label class="block mb-1 font-medium">Category</label>
-        <input v-model="category" type="text" class="w-full p-2 border rounded" required />
+        <select v-model="category" class="w-full p-2 border rounded" required>
+          <option value="" disabled>Select Category</option>
+          <option v-for="cat in categories" :key="cat" :value="cat">{{ cat }}</option>
+        </select>
       </div>
 
       <div>
@@ -26,10 +29,8 @@
       <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded">Add Product</button>
     </form>
 
-    <div
-      v-if="toast.visible"
-      class="fixed bottom-6 right-6 bg-green-500 text-white px-4 py-2 rounded shadow-lg transition-opacity duration-300"
-    >
+    <div v-if="toast.visible"
+      class="fixed bottom-6 right-6 bg-green-500 text-white px-4 py-2 rounded shadow-lg transition-opacity duration-300">
       {{ toast.message }}
     </div>
   </div>
